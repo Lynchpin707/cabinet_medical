@@ -8,8 +8,8 @@ from sqlalchemy.orm import Session
 from . import  models
 from backend import database
 
-# Configuration
-SECRET_KEY = "VOTRE_CLE_TRES_SECRETE" # À changer en production
+# !!!! Change
+SECRET_KEY = "VOTRE_CLE_TRES_SECRETE"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 

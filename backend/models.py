@@ -119,7 +119,6 @@ class Catalogue(Base):
     nom_catalogue = Column(String(100), nullable=False)
     description = Column(String(255))
 
-    # Relation vers les tarifs
     tarifs = relationship("Tarifier", back_populates="catalogue")
 
 class ActeMedical(Base):
@@ -128,9 +127,8 @@ class ActeMedical(Base):
     nom_acte = Column(String(100), nullable=False)
     code_acte = Column(String(20), unique=True) # Ex: C, CS, APC
 
-    # Relation vers les tarifs
+
     tarifs = relationship("Tarifier", back_populates="acte")
-    # Relation vers les factures
     factures = relationship("Facture", back_populates="acte")
 
 class Tarifier(Base):
@@ -207,7 +205,7 @@ class Ordonnance(Base):
     instructions = Column(Text) # Conseils généraux
 
     visite = relationship("Visite")
-    # Liaisons vers le contenu
+    
     medicaments = relationship("PrescrireMed", back_populates="ordonnance")
     analyses = relationship("PrescrireAnalyse", back_populates="ordonnance")
 
@@ -216,8 +214,8 @@ class PrescrireMed(Base):
     __tablename__ = "prescrire_med"
     id_ordonnance = Column(Integer, ForeignKey("ordonnance.id_ordonnance"), primary_key=True)
     id_medicament = Column(Integer, ForeignKey("medicament.id_medicament"), primary_key=True)
-    posologie = Column(String(255)) # Ex: 1 matin et soir
-    duree = Column(String(50))      # Ex: 7 jours
+    posologie = Column(String(255)) 
+    duree = Column(String(50))      
 
     ordonnance = relationship("Ordonnance", back_populates="medicaments")
     medicament = relationship("Medicament")
@@ -237,7 +235,6 @@ class Symptome(Base):
     nom_symptome = Column(String(100), nullable=False)
     code_symptome = Column(String(20)) # Ex: FEVP (Fièvre), TOUX
 
-    # Relation vers les visites via la table de liaison
     visites = relationship("Detecter", back_populates="symptome")
 
 class Detecter(Base):
@@ -246,7 +243,7 @@ class Detecter(Base):
     id_symptome = Column(Integer, ForeignKey("symptome.id_symptome"), primary_key=True)
     intensite = Column(String(50)) # Faible, Modérée, Forte
 
-    visite = relationship("Visite") # Assurez-vous que la classe Visite existe
+    visite = relationship("Visite") 
     symptome = relationship("Symptome", back_populates="visites")
     
 class Signaler(Base):

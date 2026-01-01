@@ -14,7 +14,7 @@ router = APIRouter(
 def creer_acte(
     obj: schema.ActeMedicalCreate, 
     db: Session = Depends(database.get_db),
-    _ = Depends(verifier_role(["Admin"])) # Seul l'Admin passe ici
+    _ = Depends(verifier_role(["Admin"])) 
 ):
     nouvel_acte = models.ActeMedical(**obj.dict())
     db.add(nouvel_acte)

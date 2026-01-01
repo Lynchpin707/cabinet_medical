@@ -11,11 +11,11 @@ def reset_db():
         
         # Supprimer toutes les tables
         models.Base.metadata.drop_all(bind=engine)
-        print("🗑️ Base de données vidée.")
+        print("Base de données vidée.")
         
         # Recréer les tables
         models.Base.metadata.create_all(bind=engine)
-        print("🔨 Tables recréées proprement.")
+        print("Tables recréées proprement.")
         
         connection.execute(text("SET FOREIGN_KEY_CHECKS = 1;"))
         trans.commit()

@@ -6,7 +6,7 @@ from .. import models
 from backend import database
 
 router = APIRouter(
-    prefix="/stats", # Changez ici pour correspondre à votre code React
+    prefix="/stats", 
     tags=["Tableau de Bord"]
 )
 

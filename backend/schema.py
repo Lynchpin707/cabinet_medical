@@ -96,7 +96,7 @@ class RDV(RDVBase):
     id_RDV: int
 
     class Config:
-        from_attributes = True # Pour Pydantic v2 (ou orm_mode=True pour v1)
+        from_attributes = True 
         
 # Ce que le Frontend envoie (Saisie minimale)
 class FactureCreate(BaseModel):
